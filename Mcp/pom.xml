@@ -8,21 +8,41 @@
     </parent>
     <groupId>org.tools.mcp</groupId>
     <artifactId>Mcp</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <name>Mcp</name>
+    <modules>
+        <module>file-system</module>
+    </modules>
 
     <properties>
+        <java.version>21</java.version>
         <java.mcp.version>2.0.0</java.mcp.version>
+        <langchain.version>1.16.3</langchain.version>
     </properties>
-    <dependencies>
 
-        <dependency>
-            <groupId>io.modelcontextprotocol.sdk</groupId>
-            <artifactId>mcp</artifactId>
-            <version>${java.mcp.version}</version>
-        </dependency>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.modelcontextprotocol.sdk</groupId>
+                <artifactId>mcp-bom</artifactId>
+                <version>${java.mcp.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
-    </dependencies>
+            <!-- langchain4j-bom -->
+            <dependency>
+                <groupId>dev.langchain4j</groupId>
+                <artifactId>langchain4j-bom</artifactId>
+                <version>${langchain.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
     <build>
         <finalName>Mcp</finalName>
     </build>

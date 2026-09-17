@@ -1,0 +1,16 @@
+
+mcp:
+  server:
+    name: java-filesystem-mcp
+    version: 1.0.0
+  filesystem:
+    allowed-root:
+
+
+# 日志配置：必须输出到 stderr，因为 stdout 被 Stdio 协议占用
+logging:
+  level:
+    io.modelcontextprotocol: DEBUG
+    root: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
